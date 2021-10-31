@@ -1,4 +1,4 @@
-package com.example.listener;
+package com.example;
 
 import javax.jms.ConnectionFactory;
 

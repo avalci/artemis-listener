@@ -1,8 +1,18 @@
-package com.example.dto;
+package com.example;
 
-public class EntityDTO {
+import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
+
+@RedisHash("Entity")
+@SuppressWarnings("serial")
+public class EntityDTO implements Serializable {
+
+	@Id
 	private Integer id;
+	@Indexed
 	private String name;
 	private Type type;
 
