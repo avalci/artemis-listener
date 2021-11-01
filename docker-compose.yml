@@ -3,8 +3,13 @@ version: '3.7'
 services:
   artemislistener:
     image: artemislistener
+    container_name: artemislistener
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
       - 8081:8081
+    volumes:
+      - artemislistener:/tmp
+volumes:
+  artemislistener:
