@@ -1,7 +1,5 @@
 #/usr/bin/env bash
 
-./mvnw clean
-
 docker-compose -f "docker-compose.yml" down
 
 ss -ntlp
