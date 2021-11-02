@@ -1,6 +1,13 @@
-version: '3.7'
+version: '3.9'
 
 services:
+  redis:
+    image: redis:6.2
+    container_name: redisartemis
+    volumes:
+      - redis:/data
+    ports:
+      - 6379:6379
   artemislistener:
     image: artemislistener
     container_name: artemislistener
@@ -13,3 +20,4 @@ services:
       - artemislistener:/tmp
 volumes:
   artemislistener:
+  redis:
