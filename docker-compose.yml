@@ -1,6 +1,22 @@
 version: '3.9'
 
 services:
+  artemis:
+    image: vromero/activemq-artemis
+    container_name: artemis
+    environment:
+      - ARTEMIS_USERNAME=artemis
+      - ARTEMIS_PASSWORD=artemis
+      - DISABLE_SECURITY=true
+    volumes:
+      - artemisdata:/var/lib/artemis/data
+      - artemisetc:/var/lib/artemis/etc
+      - artemisetcover:/var/lib/artemis/etc-override
+      - artemislock:/var/lib/artemis/lock
+      - artemisjmx:/opt/jmx-exporter/etc-override
+    ports:
+      - 8161:8161
+      - 61616:61616
   redis:
     image: redis:6.2
     container_name: redisartemis
@@ -18,6 +34,14 @@ services:
       - 8081:8081
     volumes:
       - artemislistener:/tmp
+    depends_on:
+      - artemis
+      - redis
 volumes:
   artemislistener:
   redis:
+  artemisdata:
+  artemisetc:
+  artemisetcover:
+  artemislock:
+  artemisjmx:
