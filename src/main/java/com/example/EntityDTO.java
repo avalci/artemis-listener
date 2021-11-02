@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
-@RedisHash("Entity")
+@RedisHash("entity")
 @SuppressWarnings("serial")
 public class EntityDTO implements Serializable {
 
